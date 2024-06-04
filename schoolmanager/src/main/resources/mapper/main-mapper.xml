@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hospital.mapper.MainMapper">
+    <insert id="save" parameterType="VaccresvDTO">
+    INSERT INTO vaccresv (resv_no, jumin, hosp_code, resv_date, resv_time, v_code)
+    VALUES (#{VaccresvDTO.resv_no},#{VaccresvDTO.jumin},#{VaccresvDTO.hosp_code},
+    #{VaccresvDTO.resv_date}, #{VaccresvDTO.resv_time}, #{VaccresvDTO.v_code})
+    </insert>
+
+    <select id="findAll" resultType="VaccresvDTO" parameterType="VaccresvDTO">
+        SELECT * FROM vaccresv
+    </select>
+
+    <select id="next" parameterType="Long">
+        SELECT nextVal('resv_no_seq');
+
+    </select>
+
+    <select id="max" parameterType="Long">
+        SELECT MAX(resv_no) FROM vaccresv
+    </select>
+
+<!--    <select id="findOne" parameterType="Long">-->
+<!--        SELECT v.resv_no, j.name, v.jumin, h.host_name, v.resv_date, v.resv_time, v.v_code, h.host_addr-->
+<!--        FROM vaccresv v JOIN jumin j-->
+<!--        ON v.jumin = j.jumin-->
+<!--        JOIN hospital h-->
+<!--        ON v.hosp_code = h.host_code-->
+<!--        WHERE v.resv_no = #{id}-->
+<!--    </select>-->
+    <select id="findOne" parameterType="Long" resultMap="vaccresvResultMap">
+        SELECT v.resv_no, h.host_name ,j.name, v.jumin, h.host_name, v.resv_date, v.resv_time, v.v_code, h.host_addr
+        FROM vaccresv v
+        JOIN jumin j ON v.jumin = j.jumin
+        JOIN hospital h ON v.hosp_code = h.host_code
+        WHERE v.resv_no = #{id}
+    </select>
+        <resultMap id="vaccresvResultMap" type="com.example.hospital.dto.VaccresvDTO">
+            <id column="resv_no" property="resv_no"/>
+            <result column="jumin" property="jumin"/>
+            <result column="hosp_code" property="hosp_code"/>
+            <result column="host_name" property="host_name"/>
+            <result column="resv_date" property="resv_date"/>
+            <result column="resv_time" property="resv_time"/>
+            <result column="v_code" property="v_code"/>
+            <result column="name" property="name"/>
+            <result column="host_name" property="host_name"/>
+            <result column="host_addr" property="host_addr"/>
+        </resultMap>
+
+</mapper>

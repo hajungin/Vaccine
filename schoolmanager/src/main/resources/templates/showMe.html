@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>백신</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="content" layout:fragment="content">
+        <h3 class="text-center mb-4">백신 예약 조회</h3>
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>예약번호</th>
+                <th>성명</th>
+                <th>성별</th>
+                <th>병원이름</th>
+                <th>예약날짜</th>
+                <th>예약시간</th>
+                <th>백신코드</th>
+                <th>병원지역</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${va.resv_no}"></td>
+                <td th:text="${va.name}"></td>
+                <td th:text="${va.jumin}"></td>
+                <td th:text="${va.host_name}"></td>
+                <td th:text="*{#strings.substring(va.resv_date,0,4)} + '년' +
+                    *{#strings.substring(va.resv_date,5,7)} + '월' +
+                    *{#strings.substring(va.resv_date,8,10)} + '일'">></td>
+                <td th:text="${va.resv_time}"></td>
+                <td th:text="${va.v_code == 'V001' ? 'A백신' : va.v_code == 'V002' ? 'B백신' : va.v_code == 'V003' ? 'C백신' : '알수없음'}"></td>
+                <td th:text="${va.host_addr}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

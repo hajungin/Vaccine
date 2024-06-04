@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!-- Header Fragment -->
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand">백신예약 프로그램 ver202109</a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/check}">백신예약</a>
+            <a class="navbar-brand" th:href="@{/show}">백신예약조회</a>
+            <a class="navbar-brand" th:href="@{/detail}">백신예약현황</a>
+            <a class="navbar-brand" th:href="@{/}">Home</a>
+        </div>
+    </nav>
+
+</div>
+</html>

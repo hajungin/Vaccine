@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>백신</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+</head>
+<body>
+
+<div class="content" layout:fragment="content">
+
+<h1 class="text-center">백신 예약 현황</h1>
+    <table class="table border">
+        <thead>
+        <tr>
+            <th>병원지역</th>
+            <th>병원지역명</th>
+            <th>접종예약건수</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="va : ${va}">
+            <td th:text="${va.host_addr}"></td>
+            <td th:text="${va.name}"></td>
+            <td th:text="${va.resv_no}"></td>
+            </tr>
+        </tbody>
+        <thead>
+        <tr>
+            <td class="text-center" colspan="2">총합</td>
+            <td th:text="${sum}"></td>
+        </tr>
+        </thead>
+    </table>
+
+
+</div>
+</body>
+</html>

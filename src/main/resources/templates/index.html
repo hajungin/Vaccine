@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>백신</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+</head>
+<body>
+
+<div class="content" layout:fragment="content">
+
+<h1 class="text-center">백신 예약 프로그램</h1>
+    <table class="table border">
+        <tr>
+            <th>예약번호</th>
+            <th>주민번호</th>
+            <th>병원코드</th>
+            <th>예약날짜</th>
+            <th>예약시간</th>
+            <th>백신코드</th>
+        </tr>
+        <tr th:each="va : ${va}">
+            <td th:text="${va.resv_no}"></td>
+            <td th:text="${va.jumin}"></td>
+            <td th:text="${va.hosp_code}"></td>
+            <td th:text="${va.resv_date}"></td>
+            <td th:text="${va.resv_time}"></td>
+            <td th:text="${va.v_code}"></td>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>

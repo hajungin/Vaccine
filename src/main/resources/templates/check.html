@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>백신</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="text/javascript" th:src="@{/js/check.js}"></script>
+
+</head>
+<body>
+<div class="content" layout:fragment="content" >
+<form id="frm" th:action="@{/check}" class="container" method="post" >
+    <h3 align="center">백신예약</h3>
+    <br>
+
+    <table class="table border">
+        <tr align="center">
+        </tr>
+        <tr>
+            <td>예약번호</td>
+            <td>
+                <input id="resv_no" type="text" class="form-control" name="resv_no" th:value="${No.resv_no}" readonly>
+            </td>
+
+        </tr>
+        <tr>
+            <td>주민번호</td>
+            <td>
+
+                <label for="jumin">
+                    <input id="jumin" name="jumin" class="form-control" aria-label="Default select example">
+<!--                        <select id="jumin" name="jumin">-->
+<!--                            <div th:each="va : ${va}">-->
+<!--                            <option th:text="${#strings.substring(va.jumin,0,9)} + '*****' "></option>-->
+<!--                            </div>-->
+<!--                        </select>-->
+                </label>
+            </td>
+            <td>
+                예) 790101-1111111
+            </td>
+        </tr>
+        <tr>
+            <td>백신코드</td>
+            <td>
+                <label for="v_code">
+                    <select id="v_code" name="v_code">
+                        <option value="V001">A백신</option>
+                        <option value="V002">B백신</option>
+                        <option value="V003">C백신</option>
+                    </select>
+                </label>
+            </td>
+            <td></td>
+
+        </tr>
+
+
+        <tr>
+        <tr>
+            <td>병원코드</td>
+            <td>
+                <div>
+                    <input type="radio" id="H001" name="hosp_code" value="H001">
+                    <label for="H001">가_병원</label>
+                    <input type="radio" id="H002" name="hosp_code" value="H002">
+                    <label for="H002">나_병원</label>
+                    <input type="radio" id="H003" name="hosp_code" value="H003">
+                    <label for="H003">다_병원</label>
+                    <input type="radio" id="H004" name="hosp_code" value="H004">
+                    <label for="H004">라_병원</label>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>예약날짜</td>
+            <td>
+                <input  type="date" id="resv_date" name="resv_date" class="form-control">
+            </td>
+            <td>
+                ex) 20210101
+            </td>
+        </tr>
+        <tr>
+            <td>예약시간</td>
+            <td>
+                <input id="resv_time" type="text" class="form-control" name="resv_time">
+            </td>
+            <td>
+                ex) 09:30, 11:30
+            </td>
+        </tr>
+    </table>
+
+    <div class="text-center">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="button" class="btn btn-primary" onclick="check()">등록</button>
+            <button type="button" class="btn btn-secondary" onclick="res()">취소</button>
+        </div>
+    </div>
+
+</form>
+</div>
+</body>
+</html>

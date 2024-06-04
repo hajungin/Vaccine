@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>백신</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="text/javascript" th:src="@{/js/show.js}"></script>
+</head>
+<body>
+
+<div class="content" layout:fragment="content">
+
+    <h3 class="text-center">백신 예약 조회</h3>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <form th:action="@{/me}" method="get">
+                    <div class="form-group">
+                        <label for="resv_no">예약번호</label>
+                        <input type="text" class="form-control" id="resv_no" name="resv_no" placeholder="예약번호 입력">
+                    </div>
+                    <button type="submit" class="btn btn-primary">조회하기</button>
+                </form>
+
+<!--                <form th:action="@{/show}" method="post">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="jumin">주민번호</label>-->
+<!--                        <input type="text" class="form-control" id="jumin" name="jumin" placeholder="주민번호 입력">-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-primary">조회하기</button>-->
+<!--                </form>-->
+
+<!--                <form th:action="@{/show}" method="post">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="resv_date">예약날짜</label>-->
+<!--                        <input type="text" class="form-control" id="resv_date" name="resv_date" placeholder="예약날짜 입력">-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-primary">조회하기</button>-->
+<!--                    <a class="btn btn-outline-success" th:href="@{/}">홈으로</a>-->
+<!--                </form>-->
+                <br>
+                <br>
+                <form th:action="@{/me}" method="get">
+                    <label>
+                        <select id="number" name="number" onchange="change()">
+                            <option selected disabled>검색 방법</option>
+                            <option value="n1">예약번호</option>
+                            <option value="n2">주민번호</option>
+                            <option value="n3">예약날짜</option>
+                        </select>
+                    </label>
+                    <div id="resv_no_div" style="display: none;">
+                        <input type="text" class="form-control" name="resv_no" placeholder="예약번호 입력">
+                    </div>
+                    <div id="jumin_div" style="display: none;">
+                        <input type="text" class="form-control" name="jumin" placeholder="주민번호 입력">
+                        <input type="hidden" name="resv_no" value="0">
+                    </div>
+                    <div id="resv_date_div" style="display: none;">
+                        <input type="text" class="form-control" name="resv_date" placeholder="예약날짜 입력">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">조회하기</button>
+                    <a class="btn btn-outline-success" th:href="@{/}">홈으로</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
